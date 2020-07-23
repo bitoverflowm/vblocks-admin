@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: verdeblocks_admin
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://mastercommander:verdeblocks@verdeblocks.cqrh6uszwamu.us-east-1.rds.amazonaws.com:5432/vblocks
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=fe3631d2abbf78113f5d60dbecf98a6184d8eea5e23e7793cb3bb950e3ffaa9aaae0f30e46b3af8f3fbd9feda0aaa0db
+      - FOREST_ENV_SECRET=84e356ef0a598a59ac41b1682693c2eaef60e6cc06d7bf364078329df8a8039b
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
